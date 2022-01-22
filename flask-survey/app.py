@@ -31,6 +31,10 @@ def questions_page(num):
     #read responses cookies from flask
     responses = session[res_key]
 
+    print("*****************")
+    print(len(responses))
+    print("*****************")
+
     # if user skip questions, redirect back to the questions
     if (num != len(responses)):
         flash("Invalid question! Please complete the survey in order")
