@@ -19,14 +19,19 @@
                 {% endfor%}
             </tbody>
         </table>
-        <form action='/check-guess'>
+        <form>
             <input type="text" placeholder="Enter Your Guess!" name="guess">
             <button>Submit</button>
         </form>
+
+        <p id="result">
+
+        </p>
+
+
+
+
     </section>
-    <div>
-        <h1>{{guess}}</h1>
-    </div>
     <script src="http://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
     <script src="/static/boggle.js"></script>

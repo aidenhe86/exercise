@@ -17,5 +17,7 @@ def index():
 @app.route("/check-guess")
 def check_guess():
     """ check if guess in the dictionary"""
-    guess = request.args["guess"]
-    return render_template("index.html", guess=guess)
+    word = request.args["guess"]
+    board = session["board"]
+    response = boggle_game.check_valid_word(board, word)
+    return jsonify({'result': response})
