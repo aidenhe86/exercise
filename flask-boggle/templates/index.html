@@ -20,16 +20,21 @@
             </tbody>
         </table>
         <form>
-            <input type="text" placeholder="Enter Your Guess!" name="guess">
+            <input type="text" placeholder="Enter Your Guess!" name="word">
             <button>Submit</button>
         </form>
-
-        <p id="result">
-
+        <p>
+            Score: <b id="score">0</b>
+            Time: <b id="second"></b>
+            <br>
+            Guessed: <b id="guess">0</b> Times
         </p>
 
-
-
+        <p>
+            Highest Score: <b id="highscore">{{highscore}}</b> Points 
+            <br>
+            Played: <b id="highplay">{{highplay}}</b> Times
+        </p>
 
     </section>
     <script src="http://unpkg.com/jquery"></script>
