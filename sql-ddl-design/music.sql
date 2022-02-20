@@ -10,19 +10,19 @@ CREATE DATABASE music;
 CREATE TABLE artists
 (
   id SERIAL PRIMARY KEY,
-  name TEXT[] UNIQUE NOT NULL
+  name TEXT NOT NULL
 );
 
 CREATE TABLE album
 (
   id SERIAL PRIMARY KEY,
-  name TEXT[] UNIQUE NOT NULL
+  name TEXT NOT NULL
 );
 
 CREATE TABLE producers
 (
   id SERIAL PRIMARY KEY,
-  name TEXT[] UNIQUE NOT NULL
+  name TEXT NOT NULL
 );
 
 CREATE TABLE songs
@@ -31,9 +31,9 @@ CREATE TABLE songs
   title TEXT NOT NULL,
   duration_in_seconds INTEGER NOT NULL,
   release_date DATE NOT NULL,
-  artists TEXT[] REFERENCES artists(name),
-  album TEXT REFERENCES album(name),
-  producers TEXT[] REFERENCES producers(name)
+  artists TEXT[] REFERENCES artists,
+  album TEXT REFERENCES album,
+  producers TEXT[] REFERENCES producers
 );
 
 INSERT INTO artists
