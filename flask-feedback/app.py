@@ -84,15 +84,18 @@ def logout_user():
 
 @app.route("/users/<username>")
 def userpage(username):
-    # checkLogin()
-    cur_user = session["username"]
-    if username != cur_user:
-        flash(f"Please login the correct account!", "warning")
+
+
+    if not checkLogin(session):
         return redirect("/")
+    # cur_user = session["username"]
+    # if username != cur_user:
+    #     flash(f"Please login the correct account!", "warning")
+    #     return redirect("/")
     
-    else:
-        user = User.query.get_or_404(username)
-        return render_template("show.html",user=user)
+    # else:
+    user = User.query.get_or_404(username)
+    return render_template("show.html",user=user)
 
 @app.route("/users/<username>/delete", methods=["POST"])
 def deleteAccount(username):
@@ -111,11 +114,12 @@ def deleteAccount(username):
 
 @app.route("/users/<username>/feedback/add", methods=["GET", "POST"])
 def addFeedback(username):
-    # checkLogin()
-    cur_user = session["username"]
-    if username != cur_user:
-        flash(f"You are {cur_user}! Please login the correct account!", "danger")
-        return redirect(f"/users/{cur_user}")
+    if not checkLogin(session):
+        return redirect("/")
+    # cur_user = session["username"]
+    # if username != cur_user:
+    #     flash(f"You are {cur_user}! Please login the correct account!", "danger")
+    #     return redirect(f"/users/{cur_user}")
 
     user = User.query.get_or_404(username)
     form = FeedbackForm()
@@ -173,8 +177,9 @@ def deleteFeedback(feedback_id):
     return redirect(f"/users/{cur_user}")
 
 # cannot separate the function
-# def checkLogin():
-#     """check if user already login"""
-#     if "username" not in session:
-#         flash("Please login first!", "danger")
-#         return redirect('/')
+def checkLogin(session):
+    """check if user already login"""
+    if "username" not in session:
+        flash("Please login first!", "danger")
+        return False
+    return True
