@@ -157,7 +157,7 @@ def users_show(user_id):
     if g.user:
         likes = [msg.id for msg in g.user.likes]
     else:
-        likes = [msg.id for msg in user.likes]
+        likes = []
     return render_template('users/show.html', user=user, messages=messages, likes=likes)
 
 
