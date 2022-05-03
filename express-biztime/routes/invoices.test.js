@@ -7,6 +7,8 @@ const {createDataBase} = require("./_test.common");
 // insert data before test
 beforeEach(createDataBase);
 
+// should clear data after each
+
 // end database after testing
 afterAll(async() =>{
     await db.end()
