@@ -1,0 +1,5 @@
+.VendingMachine-link{
+    font-size: 50px;
+    display: flex;
+    justify-content: space-around;
+}
